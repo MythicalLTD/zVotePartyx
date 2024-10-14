@@ -71,7 +71,7 @@ public enum Message {
 			), 
 	
 	VOTE_STARTPARTY("§aYou just launched the voting party."),
-	
+	DESCRIPTION_FAKEVOTE("§7Allows you to simulate a vote."),
 	;
 
 	private List<String> messages;

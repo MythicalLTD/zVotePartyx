@@ -28,7 +28,7 @@ import fr.maxlego08.zvoteparty.save.MessageLoader;
 import fr.maxlego08.zvoteparty.storage.ZStorageManager;
 import fr.maxlego08.zvoteparty.zcore.ZPlugin;
 import fr.maxlego08.zvoteparty.zcore.enums.EnumInventory;
-import fr.maxlego08.zvoteparty.zcore.utils.plugins.Metrics;
+//import fr.maxlego08.zvoteparty.zcore.utils.plugins.Metrics;
 import fr.maxlego08.zvoteparty.zcore.utils.plugins.Plugins;
 import fr.maxlego08.zvoteparty.zcore.utils.plugins.VersionChecker;
 
@@ -123,7 +123,7 @@ public class ZVotePartyPlugin extends ZPlugin {
 		VersionChecker checker = new VersionChecker(this, 124);
 		checker.useLastVersion();
 
-		new Metrics(this, 12543);
+		//new Metrics(this, 12543);
 
 		this.postEnable();
 	}

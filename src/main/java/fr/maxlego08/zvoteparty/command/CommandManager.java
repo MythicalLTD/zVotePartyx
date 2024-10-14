@@ -3,6 +3,7 @@ package fr.maxlego08.zvoteparty.command;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -13,7 +14,6 @@ import org.bukkit.command.PluginCommand;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.craftbukkit.v1_16_R3.CraftServer;
 
 import fr.maxlego08.zvoteparty.ZVotePartyPlugin;
 import fr.maxlego08.zvoteparty.api.enums.Message;
@@ -194,11 +194,13 @@ public class CommandManager extends ZUtils implements CommandExecutor, TabComple
 
     public void registerCommand(String string, VCommand vCommand, String... aliases) {
         try {
-            CommandMap commandMap = ((CraftServer) Bukkit.getServer()).getCommandMap();
+            Map<String, String[]> commandMap = Bukkit.getServer().getCommandAliases();
             PluginCommand command = Bukkit.getPluginCommand(string);
             
             if (command == null) {
-                command = new PluginCommand(string, this.plugin);
+                java.lang.reflect.Constructor<PluginCommand> constructor = PluginCommand.class.getDeclaredConstructor(String.class, Plugin.class);
+                constructor.setAccessible(true);
+                command = constructor.newInstance(string, this.plugin);
             }
 
             command.setExecutor(this);
@@ -208,7 +210,7 @@ public class CommandManager extends ZUtils implements CommandExecutor, TabComple
             commands.add(vCommand.addSubCommand(string));
             vCommand.addSubCommand(aliases);
 
-            commandMap.register(string, command);
+            ((CommandMap) commandMap).register(string, command);
         } catch (Exception e) {
             e.printStackTrace();
         }

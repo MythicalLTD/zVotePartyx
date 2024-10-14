@@ -19,7 +19,7 @@ import fr.maxlego08.zvoteparty.zcore.ZPlugin;
 /**
  * Custom Gson TypeAdapter for serializing and deserializing Reward objects.
  */
-public class RewardAdapter extends TypeAdapter<Reward> {
+public class VoteAdapter extends TypeAdapter<Reward> {
 
     private final ZPlugin plugin;
     private final Type mapType = new TypeToken<Map<String, Object>>() {}.getType();
@@ -33,7 +33,7 @@ public class RewardAdapter extends TypeAdapter<Reward> {
      *
      * @param plugin the ZPlugin instance used for Gson operations
      */
-    public RewardAdapter(ZPlugin plugin) {
+    public VoteAdapter(ZPlugin plugin) {
         this.plugin = plugin;
     }
 

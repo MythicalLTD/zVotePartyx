@@ -2,6 +2,7 @@ name: zVoteParty
 authors: 
   - Maxlego08
   - Abasing (Zamin Ali)
+  - NaysKutzu
 main: fr.maxlego08.zvoteparty.ZVotePartyPlugin
 softdepend: [PlaceholderAPI, Votifier, zMenu]
 version: '${project.version}'

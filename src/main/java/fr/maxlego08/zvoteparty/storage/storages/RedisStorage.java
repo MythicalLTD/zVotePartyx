@@ -10,6 +10,7 @@ import fr.maxlego08.zvoteparty.storage.redis.ServerMessaging;
 import fr.maxlego08.zvoteparty.zcore.utils.ElapsedTime;
 import fr.maxlego08.zvoteparty.zcore.utils.storage.Persist;
 
+@SuppressWarnings("unused")
 public class RedisStorage extends SqlStorage implements IStorage {
 
 	private final RedisClient redisClient;

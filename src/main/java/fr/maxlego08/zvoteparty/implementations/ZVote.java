@@ -58,15 +58,15 @@ public class ZVote implements Vote {
     }
 
     @Override
-    public boolean rewardIsGiven() {
-        return rewardIsGiven;
-    }
-
-    @Override
     public void giveReward(Plugin plugin, Player player) {
         if (!rewardIsGiven) {
             rewardIsGiven = true;
             reward.give(plugin, player);
         }
+    }
+
+    @Override
+    public boolean rewardIsGive() {
+        return rewardIsGiven;
     }
 }

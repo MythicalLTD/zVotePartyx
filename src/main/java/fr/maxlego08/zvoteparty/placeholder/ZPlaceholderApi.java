@@ -96,7 +96,7 @@ public class ZPlaceholderApi extends ZUtils {
      * @param placeholder the placeholder key
      * @return the replacement value or null if not handled
      */
-    private String onRequest(Player player, String placeholder) {
+    String onRequest(Player player, String placeholder) {
         if (plugin == null) {
             return null;
         }
