@@ -3,7 +3,6 @@ package fr.maxlego08.zvoteparty.command;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -194,7 +193,6 @@ public class CommandManager extends ZUtils implements CommandExecutor, TabComple
 
     public void registerCommand(String string, VCommand vCommand, String... aliases) {
         try {
-            Map<String, String[]> commandMap = Bukkit.getServer().getCommandAliases();
             PluginCommand command = Bukkit.getPluginCommand(string);
             
             if (command == null) {
@@ -210,7 +208,14 @@ public class CommandManager extends ZUtils implements CommandExecutor, TabComple
             commands.add(vCommand.addSubCommand(string));
             vCommand.addSubCommand(aliases);
 
-            ((CommandMap) commandMap).register(string, command);
+            try {
+                java.lang.reflect.Field commandMapField = Bukkit.getServer().getClass().getDeclaredField("commandMap");
+                commandMapField.setAccessible(true);
+                CommandMap commandMap = (CommandMap) commandMapField.get(Bukkit.getServer());
+                commandMap.register(string, command);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

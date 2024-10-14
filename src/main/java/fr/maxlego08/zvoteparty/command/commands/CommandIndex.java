@@ -16,6 +16,7 @@ public class CommandIndex extends VCommand {
             new CommandHelp(plugin),
             new CommandAdd(plugin),
             new CommandRemove(plugin),
+            new CommandFakeVote(plugin),
             new CommandConfig(plugin),
             new CommandStartParty(plugin)
         );
